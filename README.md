@@ -101,11 +101,17 @@ Each mechanism serves a distinct purpose in AWS identity and access management. 
 
 Summary Table
 
-| Mechanism | Scope/Context | Purpose/Usage | |-----------------------|---------------------------|---------------------------------------------------------------| | SCPs | Org/OU/Account | Organization-wide guardrails, compliance, service allow/deny | | IAM Roles | User, App, AWS Service | Grant temporary, task, or service-linked permissions | | Permission Boundaries | User or Role (IAM entity) | Limit delegated users/roles from over-privileging themselves |
+| Mechanism | Scope/Context | Purpose/Usage | 
+|-----------------------|---------------------------|---------------------------------------------------------------| 
+| SCPs | Org/OU/Account | Organization-wide guardrails, compliance, service allow/deny | 
+| IAM Roles | User, App, AWS Service | Grant temporary, task, or service-linked permissions | 
+| Permission Boundaries | User or Role (IAM entity) | Limit delegated users/roles from over-privileging themselves |
 
 Example Use in Combination
 
+```txt
 Imagine a developer in a sandbox account. SCPs might allow only EC2, S3, and CloudWatch. An IAM Role the developer uses has permissions to those services. A permission boundary further limits that role to “readonly” S3 actions only. This multi-layer model is Defense-in-Depth.
+```
 
 </details>
 
