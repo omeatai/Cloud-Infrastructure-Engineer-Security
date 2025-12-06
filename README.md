@@ -67,9 +67,45 @@ A multi-account AWS security posture is best when built around strong governance
 </details>
 
 <details>
-  <summary>What </summary>
+  <summary>What is the difference between Service Control Policies (SCPs), IAM roles, and permission boundaries in AWS? When would you use each one? </summary>
 
-  - [ ] The 
+  - [ ] The
+
+Each mechanism serves a distinct purpose in AWS identity and access management. Here’s a breakdown:
+
+### 1. Service Control Policies (SCPs):
+
+  - [ ] Scope: Apply at the AWS Organization, Organizational Unit (OU), or Account level (not directly to users or roles).
+  - [ ] Function: SCPs define the maximum allowed permissions for any IAM principal (user/role) in an account. They are “guardrails”—even if an IAM user or role has broad permissions, the SCP can further restrict those.
+  - [ ] Use case: Enforcing organization-wide security controls, compliance rules, or service whitelisting/blacklisting across multiple accounts (e.g., “No one can create public S3 buckets”; “No EC2 instances in ap-southeast-1”).
+  - [ ] Important: SCPs do not grant permissions themselves; they only limit what’s possible.
+
+### 2. IAM Roles:
+
+  - [ ] Scope: Defined at the account level; used by people, services, or applications to assume temporary credentials with a defined permission set.
+  - [ ] Function: Grant granular, task-based permissions. Roles are assumed (via STS) instead of being statically attached to a user.
+  - [ ] Use case:
+    - Cross-account access (DevOps engineer assumes a role in a prod account)
+    - Federated authentication (SSO/AD users assume roles)
+    - Service roles (EC2, Lambda, CodeBuild, etc.)
+  - [ ] Important: Roles make least privilege and temporary access easier to enforce.
+
+### 3. Permission Boundaries:
+
+  - [ ] Scope: Applied to IAM roles or users to set the maximum set of permissions they can ever have, regardless of what is attached.
+  - [ ] Function: Acts as a "fence" to prevent privilege escalation via policies attached later.
+  - [ ] Use case:
+    - Delegated administration: A DevOps team can create roles/users for projects but cannot elevate anyone’s permissions beyond what the permission boundary allows.
+    - SaaS multi-tenant environments or where self-service IAM provisioning is enabled.
+  - [ ] Important: Permission boundaries do not grant access but set a ceiling for how much access can be provided via policies.
+
+Summary Table
+
+| Mechanism | Scope/Context | Purpose/Usage | |-----------------------|---------------------------|---------------------------------------------------------------| | SCPs | Org/OU/Account | Organization-wide guardrails, compliance, service allow/deny | | IAM Roles | User, App, AWS Service | Grant temporary, task, or service-linked permissions | | Permission Boundaries | User or Role (IAM entity) | Limit delegated users/roles from over-privileging themselves |
+
+Example Use in Combination
+
+Imagine a developer in a sandbox account. SCPs might allow only EC2, S3, and CloudWatch. An IAM Role the developer uses has permissions to those services. A permission boundary further limits that role to “readonly” S3 actions only. This multi-layer model is Defense-in-Depth.
 
 </details>
 
