@@ -69,8 +69,6 @@ A multi-account AWS security posture is best when built around strong governance
 <details>
   <summary>What is the difference between Service Control Policies (SCPs), IAM roles, and permission boundaries in AWS? When would you use each? </summary>
 
-  - [ ] The
-
 Each mechanism serves a distinct purpose in AWS identity and access management. Here’s a breakdown:
 
 ### 1. Service Control Policies (SCPs):
