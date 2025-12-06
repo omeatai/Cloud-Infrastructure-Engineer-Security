@@ -107,7 +107,9 @@ Summary Table
 
 Example Use in Combination
 
-Imagine a developer in a sandbox account. SCPs might allow only EC2, S3, and CloudWatch. An IAM Role the developer uses has permissions to those services. A permission boundary further limits that role to “readonly” S3 actions only. This multi-layer model is Defense-in-Depth.
+  - [ ] Imagine a developer in a sandbox account. SCPs might allow only EC2, S3, and CloudWatch.
+  - [ ] An IAM Role the developer uses has permissions to those services.
+  - [ ] A permission boundary further limits that role to “readonly” S3 actions only. This multi-layer model is Defense-in-Depth.
 
 </details>
 
