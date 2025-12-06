@@ -67,7 +67,7 @@ A multi-account AWS security posture is best when built around strong governance
 </details>
 
 <details>
-  <summary>What is the difference between Service Control Policies (SCPs), IAM roles, and permission boundaries in AWS? When would you use each one? </summary>
+  <summary>What is the difference between Service Control Policies (SCPs), IAM roles, and permission boundaries in AWS? When would you use each? </summary>
 
   - [ ] The
 
@@ -109,9 +109,7 @@ Summary Table
 
 Example Use in Combination
 
-```txt
 Imagine a developer in a sandbox account. SCPs might allow only EC2, S3, and CloudWatch. An IAM Role the developer uses has permissions to those services. A permission boundary further limits that role to “readonly” S3 actions only. This multi-layer model is Defense-in-Depth.
-```
 
 </details>
 
