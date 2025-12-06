@@ -113,9 +113,70 @@ Example Use in Combination
 
 </details>
 
+<details>
+  <summary>Explain envelope encryption using AWS KMS. Why is it recommended for securing data at scale in the cloud? </summary>
 
+Envelope encryption is a scalable pattern for encrypting large amounts of data in the cloud, balancing security and performance. In AWS, it leverages AWS Key Management Service (KMS).
 
+How it works (step-by-step):
 
+  - [ ] Generate a Data Key:
+
+    - When an application needs to encrypt data (such as a file, database record, or object), it calls AWS KMS to generate a data key.
+    - KMS provides two things:
+      - a plaintext data key (used for encryption), and
+      - a ciphertext (encrypted) copy of the data key (encrypted with a KMS Customer Master Key/CMK).
+
+  - [ ] Encrypt Data Locally:
+
+    -  The application encrypts the data with the plaintext data key (using a fast, symmetric algorithm like AES256).
+    -  Immediately after, the plaintext data key is discarded from memory.
+
+  - [ ] Store Both:
+
+    - After encrypting your data with the plaintext data key, you immediately delete the plaintext data key from memory for security.
+    - You then store:
+      - The encrypted data (for example, a file, object, or database value)
+      - The encrypted (ciphertext) data key, which was created by encrypting the data key with your KMS CMK
+    - These are stored together, often as part of the same file, object, or database record's metadata.
+    - This allows you to retrieve and decrypt the data in the future, because you’ll have the correct encrypted data key corresponding to that specific piece of data.
+    - The encrypted data key is secure and can only be decrypted using AWS KMS, under proper permissions.
+
+Why is this pattern recommended?
+
+  - [ ] Security:
+
+    -  The KMS CMK (Customer Master Key) never leaves AWS KMS and can be tightly controlled/audited.
+    -  Data keys are short-lived in memory, reducing key compromise risk.
+
+  - [ ] Performance/Scale:
+
+    -  Symmetric encryption (AES256) is computationally efficient for large files—much faster than invoking KMS encrypt/decrypt for every operation.
+    -  KMS operations are minimal, as KMS only manages small keys (the data keys) rather than bulk data.
+
+  - [ ] Centralized Control & Auditing:
+
+    -  All KMS key usage is logged (CloudTrail), supporting compliance and monitoring.
+    -  Access can be tightly controlled using KMS key policies, IAM, and encryption context.
+
+Common AWS Use Cases:
+
+  - [ ] S3 Server-Side Encryption (SSE-KMS)
+  - [ ] EBS Volume Encryption
+  - [ ] RDS/Redshift/GLUE/S3 encryption
+  - [ ] Applications managing secret material or files at scale
+
+In summary:
+Envelope encryption lets you efficiently protect vast amounts of data with robust centralized key control, detailed audit logs, and minimum performance overhead.
+
+</details>
+
+<details>
+  <summary>What </summary>
+
+  - [ ] The 
+
+</details>
 
 
 
