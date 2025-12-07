@@ -172,9 +172,64 @@ Envelope encryption lets you efficiently protect vast amounts of data with robus
 </details>
 
 <details>
-  <summary>What </summary>
+  <summary>How do you prioritize vulnerabilities discovered across your cloud infrastructure? Walk me through your process and the factors you consider. </summary>
 
-  - [ ] The 
+Prioritizing vulnerabilities is critical to ensure resources are focused on the highest risks first. My process includes technical severity AND business context:
+
+Step-by-step Process:
+
+### Collect Data from Tools
+
+  - [ ] Ingest vulnerability findings from SAST/DAST scanners, Rapid7 InsightAppSec, Snyk, CrowdStrike, etc.
+  - [ ] Consolidate multiple sources to a central dashboard or vulnerability management system.
+
+### Determine Technical Severity
+
+  - [ ] Use standardized scores (CVSS - Common Vulnerability Scoring System).
+  - [ ] Pay particular attention to vulnerabilities scored as Critical (9.0–10) or High (7.0–8.9).
+
+### Map to Business & Asset Context
+
+  - [ ] Identify which assets are exposed: public/internet-facing systems, critical production workloads, regulated data stores, etc.
+  - [ ] Classify assets by risk: is this in a PCI/financial environment, or an isolated dev test box?
+
+### Assess Exploitability
+
+  - [ ] Check if there are active exploits in the wild (via CISA KEV database, vendor advisories, threat intel feeds).
+  - [ ] Prioritize vulnerabilities with weaponized exploits or those mentioned in recent attack campaigns.
+
+### Evaluate Compensating Controls
+
+  - [ ] Determine if there are mitigating controls already in place (WAF, network isolation, endpoint protection).
+  - [ ] Sometimes a critical finding may be less urgent if the asset is fully isolated or heavily monitored.
+
+### Check for Duplicates/False Positives
+
+  - [ ] Review and correlate results from multiple vulnerability scanning tools (such as Snyk, Rapid7, GitHub Advanced Security) because the same vulnerability might be reported more than once for the same asset.
+  - [ ] Validate findings, especially those flagged as critical or high, to reduce time wasted on non-issues.
+  - [ ] Use automated correlation features or manual analysis to identify and filter out duplicate entries and likely false positives.
+
+### Prioritize Remediation Based on Risk Score
+
+  - [ ] Use a formula combining CVSS, exploitability, business criticality, and exposure (for example: “critical CVSS + public asset + active exploit” = top priority).
+  - [ ] Tag as Urgent (patch/mitigate ASAP), High (within 7 days), Medium, or Low (next maintenance cycle).
+
+### Communicate and Track
+
+  - [ ] Generate reports for stakeholders, showing counts/severity, open/closed rate, trend analysis.
+  - [ ] Assign tickets to responsible teams and track remediation progress in security tools or JIRA.
+
+Key Factors Considered:
+  - [ ] CVSS score (severity)
+  - [ ] Asset criticality and data sensitivity
+  - [ ] Exposure (public/internet-accessible vs internal)
+  - [ ] Exploit availability and threat intelligence
+  - [ ] Business impact (compliance, revenue, customer trust)
+  - [ ] Time since discovery and vendor SLA guidance
+
+Summary:
+
+"I follow a risk-based approach—combining severity with asset criticality, exploitability, and business impact—so that we fix what's most dangerous and relevant to our organization first."
 
 </details>
 
