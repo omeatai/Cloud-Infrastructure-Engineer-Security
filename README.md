@@ -180,7 +180,7 @@ Step-by-step Process:
 
 ### Collect Data from Tools
 
-  - [ ] Ingest vulnerability findings from SAST/DAST scanners, Rapid7 InsightAppSec, Snyk, CrowdStrike, etc.
+  - [ ] Ingest vulnerability findings from SAST(Static Application Security Testing)/DAST(Dynamic Application Security Testing) scanners, Rapid7 InsightAppSec, Snyk, CrowdStrike, etc.
   - [ ] Consolidate multiple sources to a central dashboard or vulnerability management system.
 
 ### Determine Technical Severity
