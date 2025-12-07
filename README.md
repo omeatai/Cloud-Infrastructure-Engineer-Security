@@ -172,7 +172,7 @@ Envelope encryption lets you efficiently protect vast amounts of data with robus
 </details>
 
 <details>
-  <summary>How do you prioritize vulnerabilities discovered across your cloud infrastructure? Walk me through your process and the factors you consider. </summary>
+  <summary>How do you prioritize vulnerabilities discovered across your cloud infrastructure? Walk me through your process and considered factors. </summary>
 
 Prioritizing vulnerabilities is critical to ensure resources are focused on the highest risks first. My process includes technical severity AND business context:
 
